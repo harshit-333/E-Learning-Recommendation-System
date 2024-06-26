@@ -1,0 +1,38 @@
+.navbar {
+    background-color: rgba(82, 74, 239,0.6);
+    color: hsl(0, 0%, 100%);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-radius: 20px; */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: large;
+}
+
+.navbar a:hover {
+    background-color: hsl(115, 61%, 47%);
+    border-radius: 10px;
+}
+
+.hero {
+    background-size: cover;
+    color: black;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.footer {
+    position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px 0;
+}

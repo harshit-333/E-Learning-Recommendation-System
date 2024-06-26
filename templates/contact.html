@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      position: relative;
+    }
+
+    img {
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 41%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: left;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      padding-left: 3%;
+      padding-right: 3%;
+      border-radius: 67px;
+      width: 55%;
+      padding-top: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    main form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main form label {
+      margin-bottom: 10px;
+    }
+
+    main form input[type="text"],
+    main form input[type="email"],
+    main form textarea {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    main form textarea {
+      height: 120px;
+    }
+
+    main form button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    main form button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 120%;
+    }
+  </style>
+</head>
+<body>
+    <img src="https://img.freepik.com/free-photo/vintage-pink-telephone-composition_23-2148913955.jpg?w=1060&t=st=1711262461~exp=1711263061~hmac=5a0620ad3d85a59a12c1ace77e59410fd17ebeced196d12f92a5c17b08d99ff0" alt="background_Image">
+  <div class="container">
+    <h1 style="text-align: center;">CONTACT US</h1>
+    <main>
+      <form action="#" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </main>
+    <footer>
+      <p>We will connect with you soon!</p>
+    </footer>
+  </div>
+</body>
+</html>

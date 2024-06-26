@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recommendations</title>
+    <img
+      src="https://c0.wallpaperflare.com/preview/807/1021/167/chart-graph-business-finance.jpg"
+      alt="background_Image"
+    />
+    <style>
+      img {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      .course-card {
+        padding: 20px;
+        margin: 20px 20px;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        width: 210px;
+        justify-content: space-around;
+        background-color: rgba(248, 248, 248, 0.8);
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .rating {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      .rating input {
+        display: none;
+      }
+
+      .rating label {
+        font-size: 30px;
+        color: #ccc;
+        cursor: pointer;
+      }
+      .rating input:checked ~ label {
+        color: #ffdd00;
+      }
+
+      .rating input:checked ~ label:before {
+        color: #cccccc;
+      }
+
+      .course_title {
+        margin-top: 5px;
+      }
+      .btn-submit {
+        text-align: center;
+      }
+      .btn-submit button {
+        padding: 10px 20px;
+        background-color: hwb(116 2% 37%);
+        color: #fff;
+        border: none;
+        border-radius: 13px;
+        cursor: pointer;
+        margin: 20px;
+        bottom: 20px;
+        width: 160px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2
+      style="
+        font-size: 20px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      "
+    >
+      Let us know what you think! Rate the following courses to personalize your
+      recommendations
+    </h2>
+    <form action="/submit-ratings" method="POST">
+      {% for course in recommendations %}
+      <div class="course-card">
+        <div class="course_title">{{course[0]}}</div>
+        <div class="rating">
+          <input
+            type="radio"
+            id="{{ course[0] }}_star1"
+            name="{{ course[0] }}"
+            value="3"
+          />
+          <label for="{{ course[0] }}_star1">★</label>
+          <input
+            type="radio"
+            id="{{ course[0] }}_star2"
+            name="{{ course[0] }}"
+            value="2"
+          />
+          <label for="{{ course[0] }}_star2">★</label>
+          <input
+            type="radio"
+            id="{{ course[0] }}_star3"
+            name="{{ course[0] }}"
+            value="1"
+          />
+          <label for="{{ course[0] }}_star3">★</label>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="btn-submit">
+        <button type="submit">Submit Ratings</button>
+      </div>
+    </form>
+    <!-- <h2>Hybrid Recommendations:</h2>
+    <div class="recommendations">
+      {% for course in net_recommendation %}
+      <div class="course-card">{{ course[0] }}</div>
+      {% endfor %}
+    </div> -->
+  </body>
+</html>

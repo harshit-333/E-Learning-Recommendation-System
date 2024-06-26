@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hybrid Recommendation</title>
+    <img
+      src="https://c0.wallpaperflare.com/preview/807/1021/167/chart-graph-business-finance.jpg"
+      alt="background_Image"
+    />
+    <style>
+      img {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      .course-card {
+        padding: 20px;
+        margin: 20px 20px;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        width: 210px;
+        justify-content: space-around;
+        background-color: rgba(248, 248, 248, 0.8);
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h2
+      style="
+        font-size: 20px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      "
+    >
+      Explore courses recommended just for you! Your ratings and preferences
+      guide the way to your next learning adventure
+    </h2>
+    <div class="recommendations">
+      {% for course in net_recommendation %}
+      <div class="course-card">{{ course[0] }}</div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

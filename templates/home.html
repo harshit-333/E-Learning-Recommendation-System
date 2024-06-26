@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <img
+      src="https://c0.wallpaperflare.com/preview/807/1021/167/chart-graph-business-finance.jpg"
+      alt="background_Image"
+    />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="/dashboard/{{username}}">Home</a>
+      <div>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+    </div>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .genre-card {
+        background-color: rgba(248, 248, 248, 0.8);
+        border-radius: 15px;
+        padding: 20px;
+        margin-right: 20px;
+        margin-bottom: 25px;
+        cursor: pointer;
+        display: inline-block;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .courses-container {
+        display: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255,0.7);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 1;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .courses-container.show {
+        display: block;
+      }
+
+      img {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      form button {
+        padding: 10px 20px;
+        background-color: hwb(116 2% 37%);
+        color: #fff;
+        border: none;
+        border-radius: 13px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160px;
+        font-size: 16px;
+      }
+
+      form button:hover {
+        background-color: hsl(120, 100%, 27%);
+      }
+    </style>
+
+    <script>
+      function toggleCourses(genreId) {
+        var coursesContainer = document.getElementById(genreId + "-courses");
+        coursesContainer.classList.toggle("show");
+      }
+    </script>
+
+    <h2 style="text-align: center">Welcome, {{ username }}!</h2>
+    <p
+      style="
+        font-size: 20px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      "
+    >
+      Empower yourself with knowledge by exploring our genre-based course
+      offerings!
+    </p>
+
+    <form action="/content-recommend" method="POST" style="margin-left: 30px;">
+      {% for genre, courses_list in course_by_genre.items() %}
+      <div
+        class="genre-card"
+        onmouseenter="toggleCourses('{{ genre }}')"
+        onmouseleave="toggleCourses('{{ genre }}')"
+      >
+        {{ genre }}
+        <div id="{{ genre }}-courses" class="courses-container">
+          {% for course in courses_list %}
+          <input
+            type="checkbox"
+            id="{{ course[0] }}"
+            name="courses"
+            value="{{ course[0] }}"
+          />
+          <label for="{{ course[0] }}">{{ course[0] }} - {{ course[1] }}</label
+          ><br />
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
